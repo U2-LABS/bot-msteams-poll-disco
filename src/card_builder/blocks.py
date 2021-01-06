@@ -29,23 +29,6 @@ SONG_ROW = {
       },
       {
           "type": "Column",
-          "width": "50px",
-          "items": [
-              {
-                  "type": "TextBlock",
-                  "text": "0",
-                  "wrap": True,
-                  "height": "stretch",
-                  "spacing": "None"
-              }
-          ],
-          "height": "stretch",
-          "spacing": "None",
-          "verticalContentAlignment": "Center",
-          "minHeight": "0px"
-      },
-      {
-          "type": "Column",
           "width": "stretch",
           "items": [
               {

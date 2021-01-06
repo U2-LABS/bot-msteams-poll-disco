@@ -1,0 +1,57 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.8/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.8",
+    "version": "1.0.0",
+    "id": "441f5c4a-2e1d-4652-b67a-923ce0489c2b",
+    "packageName": "com.develop.app",
+    "developer": {
+        "name": "Stashchen",
+        "websiteUrl": "https://github.com/Stashchen",
+        "privacyUrl": "https://github.com/Stashchen",
+        "termsOfUseUrl": "https://github.com/Stashchen"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "PythonTestBot",
+        "full": "Python bot for test purpose"
+    },
+    "description": {
+        "short": "Bot for test purposes",
+        "full": "A little test bot, started with Azure"
+    },
+    "accentColor": "#FBBFFB",
+    "bots": [
+        {
+            "botId": "3232944d-aafa-431a-a97e-be2f72af93cb",
+            "scopes": [
+                "personal",
+                "team",
+                "groupchat"
+            ],
+            "commandLists": [
+                {
+                    "scopes": [
+                        "team",
+                        "groupchat"
+                    ],
+                    "commands": [
+                        {
+                            "title": "disco",
+                            "description": "starting poll"
+                        }
+                    ]
+                }
+            ],
+            "supportsFiles": true,
+            "isNotificationOnly": false
+        }
+    ],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": []
+}

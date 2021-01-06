@@ -1,18 +1,17 @@
 from botbuilder.core import TurnContext
 from botbuilder.schema import Activity
 
-from src.chat_functions import send_chat_message
 from src.handlers.commands import handle_disco_command
 from src.models.poll import Poll
 
 
-def _parse_slash_command(text: str):
+def _parse_text_with_command(text: str):
     """ Parse string that is passed when bot command is invoked. """
     return text.split('</at>')[-1].rstrip().strip().split()
 
-async def handle_bot_commands(text: str, poll: Poll, turn_context: TurnContext):
+async def handle_bot_commands(turn_context: TurnContext, text: str, poll: Poll):
     """ Function that invokes / commands. """
-    command, *args = _parse_slash_command(text)
+    command, *args = _parse_text_with_command(text)
 
     if command == 'disco':
         await handle_disco_command(turn_context, poll)

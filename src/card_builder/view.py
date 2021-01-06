@@ -21,7 +21,6 @@ class AdaptiveCardView:
 
         row['id'] = song.id_music
         row['columns'][0]['items'][0]['text'] = song.author
-        row['columns'][1]['items'][0]['text'] = len(song.voted_users)
 
         card['body'].append(row)
 
