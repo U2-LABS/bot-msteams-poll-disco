@@ -19,8 +19,10 @@ class AdaptiveCardView:
     def _append_row(self, card: dict, song: Song):
         row = copy.deepcopy(SONG_ROW)
 
-        row['id'] = song.id_music
-        row['columns'][0]['items'][0]['text'] = song.author
+        song_details = ' '.join([song.title, '---', song.author])
+
+        row['columns'][0]['items'][0]['text'] = song_details
+        row['columns'][1]['items'][0]['actions'][0]['data']['song_id'] = song.id_music 
 
         card['body'].append(row)
 

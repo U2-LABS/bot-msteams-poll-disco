@@ -12,11 +12,11 @@ SONG_ROW = {
     "columns": [
       {
           "type": "Column",
-          "width": "250px",
+          "width": "320px",
           "items": [
               {
                   "type": "TextBlock",
-                  "text": "Song name",
+                  "text": "Song details",
                   "wrap": True,
                   "height": "stretch",
                   "spacing": "None"
@@ -37,7 +37,10 @@ SONG_ROW = {
                       {
                           "type": "Action.Submit",
                           "title": "Vote",
-                          "style": "positive"
+                          "style": "positive",
+                          "data": {
+                              "song_id": 1
+                          }
                       }
                   ]
               }
