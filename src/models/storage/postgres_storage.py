@@ -14,7 +14,7 @@ class PostgresStorage(AbstractStorage):
         return False
 
     def get_all_songs(self):
-        return Song.select()
+        return Song.select().execute()
 
     def save_songs(self, songs: List[dict]):
         for song in songs:
@@ -51,9 +51,17 @@ class PostgresStorage(AbstractStorage):
         song.update(
             mark=song.mark - 1
         ).where(Song.id_music == song.id_music).execute()
-                
+
+    def nullify_song_votes(self, song: Song):
+        song.update(
+            mark=0
+        ).where(Song.id_music == song.id_music).execute()
+        song.update(
+            voted_users=[]
+        ).where(Song.id_music == song.id_music).execute()
+
     def clear(self):
-        Song.truncate_table(restart_identity=True)
+        Song.delete().execute()
         
     @property
     def is_any_song_in_db(self):

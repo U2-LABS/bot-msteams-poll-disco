@@ -1,5 +1,5 @@
 from botbuilder.core import TurnContext
-from botbuilder.schema import ConversationParameters, Activity
+from botbuilder.schema import ConversationParameters, Activity, TextFormatTypes
 from botbuilder.core.teams import TeamsInfo
 
 

@@ -1,16 +1,27 @@
 from botbuilder.core import TurnContext
-from botbuilder.schema import Activity
 
-from src.handlers.commands import handle_disco_command, handle_lightsoff_command
+from src.handlers.commands import (
+    handle_disco_command,
+    handle_lightsoff_command,
+    handle_top_command,
+    handle_poptop_command,
+    handle_poll_status_command,
+    handle_settings_command
+)
 from src.models.poll import Poll
 
 
 def _parse_text_with_command(text: str):
     """ Parse string that is passed when bot command is invoked. """
-    return text.split('</at>')[-1].rstrip().strip().split()
+    if after_bot_name_text := text.split('</at>')[-1].rstrip().strip():
+        return after_bot_name_text.split()
+    else:
+        return '', []
+
 
 async def handle_bot_commands(turn_context: TurnContext, poll: Poll, text: str):
     """ Function that invokes / commands. """
+
     command, *args = _parse_text_with_command(text)
 
     if command == 'disco':
@@ -18,14 +29,10 @@ async def handle_bot_commands(turn_context: TurnContext, poll: Poll, text: str):
     elif command == 'lightsoff':
         await handle_lightsoff_command(turn_context, poll)
     elif command == 'top':
-        pass
+        await handle_top_command(turn_context, poll, args)
     elif command == 'poptop':
-        pass
+        await handle_poptop_command(turn_context, poll, args)
     elif command == 'settings':
-        pass
-    elif command == 'resume':
-        pass
-    elif command == 'drop':
-        pass
+        await handle_settings_command(turn_context, poll, args)
     elif command == 'poll_status':
-        pass
+        await handle_poll_status_command(turn_context, poll)
