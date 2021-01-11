@@ -24,7 +24,12 @@ source env/bin/activate
 ```
 pip install -r requirements.txt
 ```
-4. Set virtual environment variables (Create .env file in the project root folder)
+4. Update Azure settings
+* To create bot, you need to visit Azure portal bot service and [create bot](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.BotService%2FbotServices)
+* After creating the bot, you will be able to get *MicrosoftAppId* in the *settings* section
+* By clicking *manage* at the top of the *MicrosoftAppId* you will be able to setup *MicrosoftAppPassword*
+* You also need to update Messaging endpoint with URL of the server, where your bot is running (**URL should end with /api/messages**)
+5. Set virtual environment variables (Create .env file in the project root folder)
 ```
 # .env file
 MicrosoftAppId='YOUR_BOT_IP'
@@ -36,7 +41,7 @@ PASSWORD_DB='YOUR_DATABASE_PASSWORD'
 HOST_DB='YOUR_DB_HOST'
 PORT_DB='YOUR_DB_PORT'
 ```
-5. Start bot
+6. Start bot
 ```
 python app.py
 ```

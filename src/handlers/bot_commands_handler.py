@@ -20,7 +20,7 @@ def _parse_text_with_command(text: str):
 
 
 async def handle_bot_commands(turn_context: TurnContext, poll: Poll, text: str):
-    """ Function that invokes / commands. """
+    """ Function that invokes bot commands. """
 
     command, *args = _parse_text_with_command(text)
 

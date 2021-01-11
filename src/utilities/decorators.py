@@ -1,12 +1,12 @@
 from pprint import pprint
 
-from src.utilities.functions import get_request_sender, create_message_activity
+from src.utilities.functions import get_request_sender_id, create_message_activity
 from src.chat_functions import send_chat_message
 
 
 def poll_is_started(func):
+    """ Check if the poll is started. """
     async def wrapped(*args):
-        """ Check if the poll is started. Ignore disco command. """
         turn_context, poll, *_ = args
 
         if not poll.isStarted:
@@ -19,12 +19,13 @@ def poll_is_started(func):
     return wrapped
 
 def poll_not_started(func):
+    """ Check if the poll is not started yet. """
     async def wrapped(*args):
         turn_context, poll, *_ = args
 
         if poll.isStarted:
             notification_msg = create_message_activity(
-                f'The poll is already started by { poll.owner.name }'
+                f'The poll is already started'
             )
             await send_chat_message(turn_context, notification_msg)
             return 
@@ -33,11 +34,12 @@ def poll_not_started(func):
     return wrapped
 
 def only_owner(func):
+    """ Check if the command invoked by owner of the poll. """
     async def wrapped(*args):
         turn_context, poll, *_ = args
-        sender = get_request_sender(turn_context)
+        sender_id = get_request_sender_id(turn_context)
 
-        if poll.owner.id != sender.id:
+        if poll.owner_id != sender_id:
             notification_msg = create_message_activity(
                 f"You can not use this command. You are not the owner of the poll."
             )

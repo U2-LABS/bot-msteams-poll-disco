@@ -7,6 +7,7 @@ from src.utilities.functions import create_message_activity
 
 
 async def _is_current_poll(turn_context: TurnContext, poll: Poll, value: dict):
+    """ Check if the poll, user is been voting is the valid one. """
     current_poll_id = value.get('poll_id')
     if poll.id != current_poll_id:
         msg_activity = create_message_activity(
@@ -18,7 +19,7 @@ async def _is_current_poll(turn_context: TurnContext, poll: Poll, value: dict):
 
 
 async def handle_buttons_click(turn_context: TurnContext, poll: Poll, value: dict):
-
+    """ Handle different buttons click events. """
     # Check if user use current poll, not previous once
     if not await _is_current_poll(turn_context, poll, value):
         return

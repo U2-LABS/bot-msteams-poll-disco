@@ -14,9 +14,11 @@ class AdaptiveCardView:
 
     @property
     def card(self):
+        """ Convert card dict to adaptive card object. """
         return CardFactory.adaptive_card(self._card)
 
     def _append_row(self, card: dict, song: Song, poll_id: str):
+        """ Create row from template dict and add it to the poll body. """
         row = copy.deepcopy(SONG_ROW)
 
         song_details = ' '.join([song.title, '---', song.author])
@@ -30,6 +32,7 @@ class AdaptiveCardView:
         card['body'].append(row)
 
     def create_card(self, songs: list, poll_id: str):
+        """ Create an adaptive card with songs. """
         card = copy.deepcopy(MAIN_BLOCK)
 
         # Add song rows
