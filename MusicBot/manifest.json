@@ -1,0 +1,76 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.8/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.8",
+    "version": "1.0.0",
+    "id": "441f5c4a-2e1d-4652-b67a-923ce0489c2b",
+    "packageName": "com.develop.app",
+    "developer": {
+        "name": "Stashchen",
+        "websiteUrl": "https://github.com/Stashchen",
+        "privacyUrl": "https://github.com/Stashchen",
+        "termsOfUseUrl": "https://github.com/Stashchen"
+    },
+    "icons": {
+        "color": "color.png",
+        "outline": "outline.png"
+    },
+    "name": {
+        "short": "MusicBot",
+        "full": "Python Music poll bot for MS Teams"
+    },
+    "description": {
+        "short": "Bot invokes poll with top 25 songs",
+        "full": "Members of the chat will vote for their favorit song and going to be able to download it."
+    },
+    "accentColor": "#000000",
+    "bots": [
+        {
+            "botId": "3232944d-aafa-431a-a97e-be2f72af93cb",
+            "scopes": [
+                "team",
+                "groupchat"
+            ],
+            "commandLists": [
+                {
+                    "scopes": [
+                        "team",
+                        "groupchat"
+                    ],
+                    "commands": [
+                        {
+                            "title": "disco",
+                            "description": "Start poll"
+                        },
+                        {
+                            "title": "lightsoff",
+                            "description": "Finish poll"
+                        },
+                        {
+                            "title": "poptop",
+                            "description": "Get one of the winning songs and download it. Reset its votes"
+                        },
+                        {
+                            "title": "top",
+                            "description": "Show top winning songs"
+                        },
+                        {
+                            "title": "poll_status",
+                            "description": "Check poll status"
+                        },
+                        {
+                            "title": "settings",
+                            "description": "Updat bot settings"
+                        }
+                    ]
+                }
+            ],
+            "supportsFiles": true,
+            "isNotificationOnly": false
+        }
+    ],
+    "permissions": [
+        "identity",
+        "messageTeamMembers"
+    ],
+    "validDomains": []
+}
